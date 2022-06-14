@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './Header.js';
 import Main from './Main.js';
-import Person from './Person.js';
 import './App.css';
 
 class App extends React.Component {
