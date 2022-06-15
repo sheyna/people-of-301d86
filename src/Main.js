@@ -1,27 +1,28 @@
 import React from 'react';
 import Person from './Person.js';
-import data from './data.json';
 import './Main.css';
+import { Container, Row } from 'react-bootstrap';
 
 class Main extends React.Component {
+
   render() {
-    let people = []
-    data.forEach((pep, idx) => {
-      people.push(
-        <Person 
+    let people = this.props.data.map((pep, idx) => {
+        return <Person 
           name={pep.name}
           imageURL={pep.imageURL}
           key={idx}
+          addHearts={this.props.addHearts}
+          handleOnShowModal={this.props.handleOnShowModal}
         />
-      )
-    })
+    });
+    // console.log(this.props);
     return (
       <main>
-        {people}
-        <Person 
-          name="Sheyna"
-          imageURL=""
-        />
+        <Container>
+          <Row xs={1} sm={2}md={3} lg={4}>
+          {people}
+          </Row>
+        </Container>
       </main>
     )
   }
