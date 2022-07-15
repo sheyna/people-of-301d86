@@ -1,16 +1,28 @@
 import React from 'react';
 import Person from './Person.js';
+import './Main.css';
+import { Container, Row } from 'react-bootstrap';
 
 class Main extends React.Component {
+
   render() {
+    let people = this.props.data.map((pep, idx) => {
+        return <Person 
+          name={pep.name}
+          imageURL={pep.imageURL}
+          key={idx}
+          addHearts={this.props.addHearts}
+          handleOnShowModal={this.props.handleOnShowModal}
+        />
+    });
+    // console.log(this.props);
     return (
       <main>
-        <Person name="Sheyna"/>
-        <Person name="Brentice"/>
-        <Person name="Yari"/>
-        <Person name="Kris"/>
-        <Person name="Matthew"/>
-        <Person name="Jamall"/>
+        <Container>
+          <Row xs={1} sm={2}md={3} lg={4}>
+          {people}
+          </Row>
+        </Container>
       </main>
     )
   }
